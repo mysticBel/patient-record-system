@@ -3,25 +3,48 @@ var buttonAdd = document.querySelector('#adicionar-paciente');
 buttonAdd.addEventListener('click',function(e){
     e.preventDefault();
 
-    var form = document.querySelector('#adicionar-paciente');
-    var pacienteData = capturarDatosPaciente(form);
+    var form = document.querySelector('#form-adicionar');
+    
+      var nombre = form.nombre.value;
+      var peso = form.peso.value;
+      var altura = form.altura.value;
+      var gordura = form.gordura.value;
 
-    adicionarPaciente(pacienteData);
+      var tabla = document.querySelector("#tabla-pacientes");
+
+      var  pacienteTr = document.createElement('tr');
+      var  nombreTd = document.createElement('td');
+      var  pesoTd = document.createElement('td');
+      var  alturaTd = document.createElement('td');
+      var  gorduraTd = document.createElement('td');
+      
+
+
+        nombreTd.textContent = nombre;
+        pesoTd.textContent = peso;
+        alturaTd.textContent = altura;
+        gorduraTd.textContent = gordura;
+       
+
+        pacienteTr.appendChild(nombreTd);
+        pacienteTr.appendChild(pesoTd);
+        pacienteTr.appendChild(alturaTd);
+        pacienteTr.appendChild(gorduraTd);
+        
+        
+       
+        tabla.appendChild(pacienteTr);
+
+
     form.reset();
 });
 
 
-// función para capturar datos del formulario
+      
+  
 
 
-function capturarDatosPaciente(form){
-   var paciente = {
-       nombre: form.nombre.value,
-       peso: form.peso.value,
-       altura: form.altura.value,
-       gordura: form.gordura.value,
-       imc: calcularIMC(form.peso.value, form.altura.value)
-    }
-    return paciente;
-}
+
+    
+
 
