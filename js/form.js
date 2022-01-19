@@ -9,6 +9,7 @@ buttonAdd.addEventListener('click',function(e){
       var peso = form.peso.value;
       var altura = form.altura.value;
       var gordura = form.gordura.value;
+      
 
       var tabla = document.querySelector("#tabla-pacientes");
 
@@ -17,6 +18,7 @@ buttonAdd.addEventListener('click',function(e){
       var  pesoTd = document.createElement('td');
       var  alturaTd = document.createElement('td');
       var  gorduraTd = document.createElement('td');
+      var  imcTd = document.createElement('td');
       
 
 
@@ -24,12 +26,14 @@ buttonAdd.addEventListener('click',function(e){
         pesoTd.textContent = peso;
         alturaTd.textContent = altura;
         gorduraTd.textContent = gordura;
+        imcTd.textContent = calcularIMC(peso, altura);
        
 
         pacienteTr.appendChild(nombreTd);
         pacienteTr.appendChild(pesoTd);
         pacienteTr.appendChild(alturaTd);
         pacienteTr.appendChild(gorduraTd);
+        pacienteTr.appendChild(imcTd);
         
         
        
