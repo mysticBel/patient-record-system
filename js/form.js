@@ -29,26 +29,24 @@ buttonAdd.addEventListener('click',function(e){
      var  pacienteTr = document.createElement('tr');
      pacienteTr.classList.add('paciente');
 
-     
-        pacienteTr.appendChild(nombreTd);
-        pacienteTr.appendChild(pesoTd);
-        pacienteTr.appendChild(alturaTd);
-        pacienteTr.appendChild(gorduraTd);
-        pacienteTr.appendChild(imcTd);
+        function construirTd(dato, clase) {
+        var td = document.createElement('td');
+        td.classList.add(clase);
+        td.textContent = dato
+        return td;
+        }
+
+        pacienteTr.appendChild(construirTd(paciente.nombre, 'info-nombre'));
+        pacienteTr.appendChild(construirTd(paciente.peso, 'info-peso'));
+        pacienteTr.appendChild(construirTd(paciente.altura, 'info-altura'));
+        pacienteTr.appendChild(construirTd(paciente.gordura, 'info-gordura'));
+        pacienteTr.appendChild(construirTd(paciente.imc, 'info-imc'));
+
+      return pacienteTr; 
    }
       
-   function construirTd(dato, clase) {
-     var td = document.createElement('td');
-     td.classList.add(clase);
-     td.textContent = dato
-     return td;
-   }
-      var  nombreTd = construirTd(paciente.nombre, 'info-nombre');
-      var  pesoTd = construirTd(paciente.peso, 'info-peso');
-      var  alturaTd = construirTd(paciente.altura, 'info-altura');
-      var  gorduraTd = construirTd(paciente.gordura, 'info-gordura');
-      var  imcTd = construirTd(paciente.imc, 'info-imc');
-      
+   
+ 
 
   
        
