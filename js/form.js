@@ -4,9 +4,14 @@ buttonAdd.addEventListener('click',function(e){
     e.preventDefault();
     var form = document.querySelector('#form-adicionar');
     var paciente = capturarDatosPaciente(form);
+    var pacienteTr= construirTr(paciente); 
+    var tabla = document.querySelector("#tabla-pacientes");
+    tabla.appendChild(pacienteTr);
+    form.reset();
 
-    
-    //capturando datos del formulario
+  });
+
+ //capturando datos del formulario
     function capturarDatosPaciente(form){
         var paciente = {
             nombre: form.nombre.value,
@@ -18,45 +23,40 @@ buttonAdd.addEventListener('click',function(e){
       return paciente
     }
     
-      
+ // crear los Tds y Tr
 
-      var tabla = document.querySelector("#tabla-pacientes");
-    
-      // crear los Tds y Tr
-      var  pacienteTr = document.createElement('tr');
-      var  nombreTd = document.createElement('td');
-      var  pesoTd = document.createElement('td');
-      var  alturaTd = document.createElement('td');
-      var  gorduraTd = document.createElement('td');
-      var  imcTd = document.createElement('td');
-      
+   function construirTr(paciente){
+     var  pacienteTr = document.createElement('tr');
+     pacienteTr.classList.add('paciente');
 
-      // asignar los valores de los Tds a la propiedad textContent
-        nombreTd.textContent = paciente.nombre;
-        pesoTd.textContent = paciente.peso;
-        alturaTd.textContent = paciente.altura;
-        gorduraTd.textContent = paciente.gordura;
-        imcTd.textContent = paciente.imc;
-        // imcTd.textContent = calcularIMC(peso, altura);
-       
-      // Asignando los Tds al Tr y el Tr a la tabla
+     
         pacienteTr.appendChild(nombreTd);
         pacienteTr.appendChild(pesoTd);
         pacienteTr.appendChild(alturaTd);
         pacienteTr.appendChild(gorduraTd);
         pacienteTr.appendChild(imcTd);
+   }
+      
+   function construirTd(dato, clase) {
+     var td = document.createElement('td');
+     td.classList.add(clase);
+     td.textContent = dato
+     return td;
+   }
+      var  nombreTd = construirTd(paciente.nombre, 'info-nombre');
+      var  pesoTd = construirTd(paciente.peso, 'info-peso');
+      var  alturaTd = construirTd(paciente.altura, 'info-altura');
+      var  gorduraTd = construirTd(paciente.gordura, 'info-gordura');
+      var  imcTd = construirTd(paciente.imc, 'info-imc');
+      
+
+  
+       
+      
         
         
        
-        tabla.appendChild(pacienteTr);
-
-
-    form.reset();
-});
-
-
-      
-  
+ 
 
 
 
