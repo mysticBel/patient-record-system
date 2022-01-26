@@ -65,6 +65,20 @@ buttonAdd.addEventListener('click',function(e){
    if(!validarAltura(paciente.altura)){
     errores.push("La altura es incorrecta!");
   }
+
+  // validar vacios
+  if(paciente.nombre.length == 0){
+    errores.push("El nombre no puede estar vacío :c");
+  }
+  if(paciente.peso.length == 0){
+    errores.push("El peso no puede estar vacío :c");
+  }
+  if(paciente.altura.length == 0){
+    errores.push("La altura no puede estar vacía :c");
+  }
+  if(paciente.gordura.length == 0){
+    errores.push("El % de gordura no puede estar vacío :c");
+  }
   return errores;
  }
 
