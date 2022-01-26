@@ -15,9 +15,12 @@ buttonAdd.addEventListener('click',function(e){
       return;  //es como un break y ya no se imprimen los valores en la tabla
     }
 
-    var tabla = document.querySelector("#tabla-pacientes");
+    var tabla = document.querySelector('#tabla-pacientes');
     tabla.appendChild(pacienteTr);
     form.reset();
+
+    var mensajesErrores = document.querySelector('#mensajes-errores');
+    mensajesErrores.innerHTML = '';
 
   });
 
@@ -65,12 +68,27 @@ buttonAdd.addEventListener('click',function(e){
    if(!validarAltura(paciente.altura)){
     errores.push("La altura es incorrecta!");
   }
+
+  // validar vacios
+  if(paciente.nombre.length == 0){
+    errores.push("El nombre no puede estar vacío :c");
+  }
+  if(paciente.peso.length == 0){
+    errores.push("El peso no puede estar vacío :c");
+  }
+  if(paciente.altura.length == 0){
+    errores.push("La altura no puede estar vacía :c");
+  }
+  if(paciente.gordura.length == 0){
+    errores.push("El % de gordura no puede estar vacío :c");
+  }
   return errores;
  }
 
 
  function exhibirMensajesErrores(errores){
    var ul = document.querySelector('#mensajes-errores');
+   ul.innerHTML= '';
 
    errores.forEach(function(error){
      var li = document.createElement('li');
