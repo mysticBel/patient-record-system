@@ -15,9 +15,12 @@ buttonAdd.addEventListener('click',function(e){
       return;  //es como un break y ya no se imprimen los valores en la tabla
     }
 
-    var tabla = document.querySelector("#tabla-pacientes");
+    var tabla = document.querySelector('#tabla-pacientes');
     tabla.appendChild(pacienteTr);
     form.reset();
+
+    var mensajesErrores = document.querySelector('#mensajes-errores');
+    mensajesErrores.innerHTML = '';
 
   });
 
@@ -85,6 +88,7 @@ buttonAdd.addEventListener('click',function(e){
 
  function exhibirMensajesErrores(errores){
    var ul = document.querySelector('#mensajes-errores');
+   ul.innerHTML= '';
 
    errores.forEach(function(error){
      var li = document.createElement('li');
