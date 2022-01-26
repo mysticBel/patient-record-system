@@ -4,10 +4,14 @@ buttonAdd.addEventListener('click',function(e){
     e.preventDefault();
     var form = document.querySelector('#form-adicionar');
     var paciente = capturarDatosPaciente(form);
-    var pacienteTr= construirTr(paciente); 
+    var pacienteTr= construirTr(paciente);
+    
+    // mensaje error
+    var errores = validarPaciente(paciente);
+    
     //validar paciente
-    if (!validarPaciente(paciente)){
-      console.log("peso incorrecto :c");
+    if (errores.length > 0){     //si hay un string de caracteres dentro
+     exhibirMensajesErrores(errores);
       return;  //es como un break y ya no se imprimen los valores en la tabla
     }
 
@@ -53,11 +57,27 @@ buttonAdd.addEventListener('click',function(e){
       
    
  function validarPaciente(paciente){
-   if(validarPeso(paciente.peso)){
-     return true;
-   }else{
-     return false;
+   var errores = [];
+   if(!validarPeso(paciente.peso)){
+     errores.push("El peso es incorrecto!");
    }
+
+   if(!validarAltura(paciente.altura)){
+    errores.push("La altura es incorrecta!");
+  }
+  return errores;
+ }
+
+
+ function exhibirMensajesErrores(errores){
+   var ul = document.querySelector('#mensajes-errores');
+
+   errores.forEach(function(error){
+     var li = document.createElement('li');
+     li.textContent = error;
+     ul.appendChild(li);
+
+   });
  }
 
   

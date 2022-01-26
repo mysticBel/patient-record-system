@@ -156,3 +156,8 @@ button[disabled=disabled], button:disabled {
 .invisible{
 	display:none;
 }
+
+#mensajes-errores{
+	color: lightcoral;
+	background-color:#f5f0c8;
+}
