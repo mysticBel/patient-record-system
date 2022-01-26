@@ -5,6 +5,12 @@ buttonAdd.addEventListener('click',function(e){
     var form = document.querySelector('#form-adicionar');
     var paciente = capturarDatosPaciente(form);
     var pacienteTr= construirTr(paciente); 
+    //validar paciente
+    if (!validarPaciente(paciente)){
+      console.log("peso incorrecto :c");
+      return;  //es como un break y ya no se imprimen los valores en la tabla
+    }
+
     var tabla = document.querySelector("#tabla-pacientes");
     tabla.appendChild(pacienteTr);
     form.reset();
@@ -46,7 +52,13 @@ buttonAdd.addEventListener('click',function(e){
    }
       
    
- 
+ function validarPaciente(paciente){
+   if(validarPeso(paciente.peso)){
+     return true;
+   }else{
+     return false;
+   }
+ }
 
   
        
