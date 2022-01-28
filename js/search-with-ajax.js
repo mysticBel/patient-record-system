@@ -14,6 +14,12 @@ btnSearch.addEventListener('click', function(){
         console.log(pacientes);
         console.log(typeof pacientes);
 
+        // añadiendo pacientes  a la tabla 
+        pacientes.forEach(function(paciente){
+            adicionarPacienteEnLaTabla(paciente);
+            console.log(paciente);
+        });
+
     })
     xhr.send();
 });
