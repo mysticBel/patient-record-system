@@ -5,6 +5,15 @@ btnSearch.addEventListener('click', function(){
     xhr.open('GET','https://alura-es-cursos.github.io/api-pacientes/pacientes.json');
     xhr.addEventListener('load', function(){
         console.log(xhr.responseText);
+        respuesta = xhr.responseText;
+        console.log(respuesta);
+        console.log(typeof respuesta);
+
+        // convertir de string a objeto
+        var pacientes = JSON.parse(respuesta);
+        console.log(pacientes);
+        console.log(typeof pacientes);
+
     })
     xhr.send();
 });
