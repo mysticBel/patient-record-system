@@ -4,7 +4,6 @@ buttonAdd.addEventListener('click',function(e){
     e.preventDefault();
     var form = document.querySelector('#form-adicionar');
     var paciente = capturarDatosPaciente(form);
-    var pacienteTr= construirTr(paciente);
     
     // mensaje error
     var errores = validarPaciente(paciente);
@@ -15,14 +14,20 @@ buttonAdd.addEventListener('click',function(e){
       return;  //es como un break y ya no se imprimen los valores en la tabla
     }
 
-    var tabla = document.querySelector('#tabla-pacientes');
-    tabla.appendChild(pacienteTr);
+    adicionarPacienteEnLaTabla(paciente);
     form.reset();
 
     var mensajesErrores = document.querySelector('#mensajes-errores');
     mensajesErrores.innerHTML = '';
 
   });
+
+// funcion para encapsular funcion crear paciente en la tabla
+    function adicionarPacienteEnLaTabla(paciente){
+        var pacienteTr = construirTr(paciente);
+        var tabla = document.querySelector('#tabla-pacientes');
+        tabla.appendChild(pacienteTr);
+    };
 
  //capturando datos del formulario
     function capturarDatosPaciente(form){
